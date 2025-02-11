@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f0e6fa; /* Light Pink Background */
+    }
+
+    .calculator {
+        max-width: 350px;
+        margin: auto;
+        padding: 30px;
+        border: 2px solid #d6a7c1; /* Rose Border */
+        border-radius: 10px;
+        background-color: #fff2e6; /* Very light pink background */
+        box-shadow: 5px 5px 10px rgba(214, 167, 193, 0.2); /* subtle shadow */
+    }
+
+    .calculator h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #b3698e; /* Darker Pink Title */
+    }
+
+    .calculator label {
+        display: block;
+        margin-bottom: 5px;
+        color: #b3698e; /* Darker Pink Labels */
+    }
+
+    .calculator input,
+    .calculator select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #d6a7c1; /* Rose Border */
+        border-radius: 5px;
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+
+    .calculator button {
+        background-color: #e6b8af; /* Light Pink Button */
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    .calculator button:hover {
+        background-color: #d6a7c1; /* Darker Pink Button on Hover */
+    }
+
+    .calculator #result {
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #b3698e; /* Darker Pink Result */
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+    <label for="number1">Enter first number:</label>
+    <input type="number" id="number1" placeholder="First Number" required>
+
+    <label for="number2">Enter second number:</label>
+    <input type="number" id="number2" placeholder="Second Number" required>
+
+    <label for="operation">Select operation:</label>
+    <select id="operation">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <h3 id="result"></h3>
+</div>
+
+<script>
+    function calculate() {
+        const number1 = parseFloat(document.getElementById("number1").value);
+        const number2 = parseFloat(document.getElementById("number2").value);
+        const operation = document.getElementById("operation").value;
+        let result;
+        
+        switch (operation) {
+            case "add":
+                result = number1 + number2;
+                break;
+            case "subtract":
+                result = number1 - number2;
+                break;
+            case "multiply":
+                result = number1 * number2;
+                break;
+            case "divide":
+                if (number2 === 0) {
+                    result = "Error: Division by zero is not allowed!"
+                } else {
+                    result = number1 / number2;
+                }
+                break;
+            default:
+                result = "Invalid operation!";
+        }
+
+        document.getElementById("result").innerText = `Result: ${result}`;
+    }
+</script>
+
+</body>
+</html>

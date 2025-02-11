@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Digits</title>
+</head>
+<style>
+    body {
+  font-family: 'Arial', sans-serif; /* Or a similar sans-serif font */
+  background-color: #f8f0e3; /* Light beige background */
+  margin: 20px;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Added width for better centering */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+  border-radius: 10px; /* Soft rounded corners */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff2e6; /* Very light pink background */
+}
+
+h2 {
+  text-align: center;
+  padding: 15px;
+  background-color: #e6b8af; /* Light pink background for h2 */
+  color: #877995; /* Muted purple-grey text */
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+input[type="number"] {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #d6a7c1; /* Light rose border */
+  border-radius: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #e6b8af; /* Light pink button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background-color: #d6a7c1; /* Slightly darker pink on hover */
+}
+
+#result {
+  text-align: center;
+  font-size: 18px;
+  color: #877995; /* Muted purple-grey text */
+}
+
+
+</style>
+<body>
+    <h1>Sum of the Digits</h1>
+    <p>Enter a number below to calculate the sum of its digits:</p>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="calculateSum()">Calculate</button>
+    <div id="result"></div>
+
+    <script>
+        function calculateSum() {
+            // Get the number from the input field
+            const number = document.getElementById('numberInput').value;
+            let num = Math.abs(parseInt(number)); // Ensure the number is positive
+            let sum = 0;
+
+            // Calculate the sum of the digits using a while loop
+            while (num > 0) {
+                sum += num % 10; // Add the last digit to the sum
+                num = Math.floor(num / 10); // Remove the last digit
+            }
+
+            // Display the result
+            const resultDiv = document.getElementById('result');
+            if (number) {
+                resultDiv.innerHTML = <p>The sum of the digits of ${number} is: <strong>${sum}</strong></p>;
+            } else {
+                resultDiv.innerHTML = <p>Please enter a valid number.</p>;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation with Google Maps</title>
+</head>
+<body>
+
+    <h2>My Location</h2>
+    <p id="status">Click the button to get your location.</p>
+    <button onclick="getLocation()">Get My Location</button>
+    <br><br>
+    <iframe id="map" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("status").innerText = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+            document.getElementById("status").innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+
+            // Embed Google Maps with user coordinates
+            let mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&output=embed`;
+            document.getElementById("map").src = mapUrl;
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("status").innerText = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("status").innerText = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("status").innerText = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("status").innerText = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+
+</body>
+</html>

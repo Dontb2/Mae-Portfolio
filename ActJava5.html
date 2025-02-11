@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+</head>
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8e6f2; /* Light Pink Background */
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #c78080; /* Deeper Rose */
+            margin-bottom: 20px;
+        }
+
+        ins {
+            color: #e6b8af; /* Light Pink */
+            font-style: italic; /* Italicized */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #d6a7c1; /* Light Rose Border */
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 250px; /* Adjust as needed */
+        }
+
+        button {
+            background-color: #e6b8af; /* Light Pink Button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d6a7c1; /* Slightly darker pink on hover */
+        }
+
+        #result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #877995; /* Muted purple-grey text */
+        }
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center elements horizontally */
+            width: 300px;
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+            border-radius: 10px; /* Soft rounded corners */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background-color: #fff2e6; /* Very light pink background */
+        }
+    </style>
+<body>
+    <h1>Reverse a Number</h1>
+    <p>Enter a number below to see its reverse:</p>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="reverseNumber()">Reverse</button>
+    <div id="result"></div>
+
+    <script>
+        function reverseNumber() {
+            // Get the number from the input field
+            const number = document.getElementById('numberInput').value;
+            let num = Math.abs(parseInt(number)); // Ensure the number is positive
+            let reversed = 0;
+
+            // Reverse the number using a do-while loop
+            do {
+                reversed = reversed * 10 + (num % 10); // Extract the last digit and add it to reversed
+                num = Math.floor(num / 10); // Remove the last digit
+            } while (num > 0);
+
+            // Display the result
+            const resultDiv = document.getElementById('result');
+            if (number) {
+                const reversedNumber = parseInt(number) < 0 ? -reversed : reversed; // Handle negative numbers
+                resultDiv.innerHTML = <p>The reverse of ${number} is: <strong>${reversedNumber}</strong></p>;
+            } else {
+                resultDiv.innerHTML = <p>Please enter a valid number.</p>;
+            }
+        }
+    </script>
+</body>
+</html>

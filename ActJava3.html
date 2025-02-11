@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+ <h1>Odd Numbers from 1 to 20</h1>
+ 
+ <div id="output"></div>
+ 
+ <script>
+   const outputDiv =
+   document.getElementById('output')
+   
+   for (let i = 1; i<=20; i++)
+   if (i % 2 !==0 ){
+     const p = document.createElement('p')
+     p.textContent = i;
+     outputDiv.appendChild(p)
+   }
+   
+ </script>
+</body>
+
+</html>
